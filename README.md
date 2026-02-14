@@ -1,4 +1,4 @@
-# CarRacing PPO: Reinforcement Learning on Anyscale
+# CarRacing PPO — Reinforcement Learning on Anyscale
 
 Train a PPO agent to drive in [CarRacing-v3](https://gymnasium.farama.org/environments/box2d/car_racing/) using Ray RLlib on Anyscale. This template demonstrates end-to-end RL: hyperparameter search with ASHA, automatic fine-tuning via a training callback, and lightweight evaluation/GIF generation.
 
@@ -76,6 +76,33 @@ Run multiple episodes to get a stable reward estimate:
 ```bash
 python evaluate.py --checkpoint /path/to/checkpoint --episodes 10
 ```
+
+### 3. Plot Training Curve
+
+Generate a training curve plot from the progress CSV (safe to run mid-training):
+
+```bash
+python evaluate.py \
+  --progress-csv /path/to/progress.csv \
+  --plot-output training_curve.png \
+  --finetune-at 500
+```
+
+Or generate both the GIF and plot in one command:
+
+```bash
+python evaluate.py \
+  --checkpoint /path/to/checkpoint \
+  --progress-csv /path/to/progress.csv \
+  --output carracing.gif \
+  --plot-output training_curve.png \
+  --finetune-at 500 \
+  --episodes 3
+```
+
+![Training Curve](training_curve.png)
+
+The plot shows min/mean/max episode returns per iteration. The red dashed line marks where the fine-tuning callback kicks in.
 
 ## Training Details
 
@@ -172,7 +199,7 @@ Options:
 python evaluate.py [OPTIONS]
 
 Options:
-  --checkpoint PATH        Path to RLlib checkpoint (required)
+  --checkpoint PATH        Path to RLlib checkpoint (for GIF generation)
   --output PATH            Output GIF path (default: carracing.gif)
   --episodes INT           Number of episodes to run (default: 1)
   --max-steps INT          Max steps per episode (default: 1000)
@@ -180,7 +207,12 @@ Options:
   --smooth-alpha FLOAT     Action smoothing, 0=off (default: 0.2)
   --steer-deadzone FLOAT   Ignore small steering (default: 0.05)
   --steer-clip FLOAT       Max steering magnitude (default: 0.8)
+  --progress-csv PATH      Path to progress.csv for training curve plot
+  --plot-output PATH       Output path for plot image (default: training_curve.png)
+  --finetune-at INT        Mark fine-tune transition on plot with red line
 ```
+
+You can use `--checkpoint` and `--progress-csv` independently or together.
 
 ## Cluster Requirements
 
