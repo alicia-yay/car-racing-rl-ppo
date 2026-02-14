@@ -102,8 +102,7 @@ python evaluate.py \
 
 ![Training Curve](training_curve.png)
 
-The plot shows min/mean/max episode returns per iteration. The red dashed line marks where the fine-tuning callback kicks in.
-
+The plot shows min/mean/max episode returns per iteration. 
 ## Training Details
 
 ### Environment Preprocessing
