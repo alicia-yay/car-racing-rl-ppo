@@ -1,0 +1,7 @@
+# CarRacing PPO Template - Dependencies
+# Ray/RLlib and torch are pre-installed in Anyscale workspace images.
+
+gymnasium[box2d]>=1.0.0
+pillow>=10.0
+imageio>=2.30
+numpy>=1.24

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.gif
+*.png
+checkpoints/
+ray_results/
