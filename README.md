@@ -1,4 +1,4 @@
-# CarRacing PPO — Reinforcement Learning on Anyscale
+# CarRacing PPO Agent: Reinforcement Learning on Anyscale
 
 Train a PPO agent to drive in [CarRacing-v3](https://gymnasium.farama.org/environments/box2d/car_racing/) using Ray RLlib on Anyscale. This template demonstrates end-to-end RL: hyperparameter search with ASHA, automatic fine-tuning via a training callback, and lightweight evaluation/GIF generation.
 
